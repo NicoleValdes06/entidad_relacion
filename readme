@@ -1,0 +1,34 @@
+//Todas las tablas tiene que tener id con el pk: valor unico
+Table users {
+    id serial [pk]
+    username varchar [unique]
+    email varchar
+}
+
+Table posts {
+    id serial [pk]
+    user_id int
+    title varchar
+    body text
+    created_at timestamp
+    info_personal int [ref: > perfil.info_personal]
+    
+}
+
+Table perfil{
+    id serial [pk]
+    info_personal varchar
+    photos varchar
+    username int [ref: > users.username]
+    
+}
+
+Table posts_especial{
+    id serial [pk]
+    username varchar [ref: > users.username]
+    title varchar
+    photos varchar
+    name varchar 
+    
+
+}
