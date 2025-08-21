@@ -1,0 +1,22 @@
+//Valores para ser seleccionados ya estando prederterminados
+//Tipos de roles de usuario
+Enum user_role {
+    admin
+    customer
+    guest
+}
+//Registro de todos los usuarios 
+Table users {
+    id serial [pk, increment]
+    username varchar(50) [not null, unique] // Not nll: valores que el usuario debe ingresar obligatoriamente
+    password varchar(255) [not null]
+    email varchar [unique, not null]  
+    role user_role [not null]
+    is_active boolean [not null, default: true] // Indica si el usuario está activo
+    name_job varchar(100) [default: 'UNICUCES'] // Default: valor por defecto, en caso de que no se especifique
+    created_at timestamp [default: `now()`] // Fecha de creación del usuario en el momento de registro
+    updated_at timestamp // Fecha en la que desee actualizar 
+    balace decimal(10,2) [default: 0.00] // El el 10 son los digitos antes del punto flotante (decimal) y el 2 son los digitos despues del punto flotante
+    serial_number integer // Integer: valor entero, sin decimales
+    Note: 'Tabla de usuarios del sistema'
+}
